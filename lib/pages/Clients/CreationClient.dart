@@ -62,9 +62,6 @@ class _CreerClientState extends State<CreerClient> {
   Cloud_Service_Client ctrsClient = new Cloud_Service_Client();
   var token = StorageUtil.getString("token");
 
-  String phoneNumber;
-  String phoneIsoCode;
-
   String _nomclient,
       _prenomclient,
       _sexeclient,
@@ -142,8 +139,8 @@ class _CreerClientState extends State<CreerClient> {
       _value1 = _values1.elementAt(0);
     }
 
-    phoneNumber = widget.client.telephoneclient;
-    phoneIsoCode = widget.client.code_pays;
+    _telephoneclient = widget.client.telephoneclient;
+    _code_pays = widget.client.code_pays;
 
     _nomclientController =
         new TextEditingController(text: widget.client.nomclient);
@@ -213,7 +210,7 @@ class _CreerClientState extends State<CreerClient> {
         source: ImageSource.camera,
         imageQuality: 50,
         maxHeight: 200,
-        maxWidth: 200,
+        maxWidth: 400,
       );
       this.setState(() {
         if (photo != null) {
@@ -239,7 +236,7 @@ class _CreerClientState extends State<CreerClient> {
         source: ImageSource.gallery,
         imageQuality: 50,
         maxHeight: 200,
-        maxWidth: 200,
+        maxWidth: 400,
       );
       this.setState(() {
         if (photo != null) {
@@ -316,7 +313,10 @@ class _CreerClientState extends State<CreerClient> {
   Future InsertOrUpdateClient(File _image) async {
     if (imageFile == null)
     {
-      _avatarclient='https://firebasestorage.googleapis.com/v0/b/fashiontailor-17711.appspot.com/o/images%2Favatars%2FcouturiersClients%2Favatar.png?alt=media&token=f15d46b7-fc30-4d1c-951a-bfeb4543d114';
+      if(_avatarclient=='image2.jpg')
+        {
+          _avatarclient='https://firebasestorage.googleapis.com/v0/b/fashiontailor-17711.appspot.com/o/images%2Favatars%2FcouturiersClients%2Favatar.png?alt=media&token=f15d46b7-fc30-4d1c-951a-bfeb4543d114';
+        }
       print("_avatarclient quand null : "+_avatarclient);
 
     } else
@@ -334,7 +334,7 @@ class _CreerClientState extends State<CreerClient> {
         _avatarclient = downloadUrl;
 
       } else {
-        _avatarclient = _avatarclient; // A revoir
+        _avatarclient='https://firebasestorage.googleapis.com/v0/b/fashiontailor-17711.appspot.com/o/images%2Favatars%2FcouturiersClients%2Favatar.png?alt=media&token=f15d46b7-fc30-4d1c-951a-bfeb4543d114';
       }
     }
 
@@ -446,7 +446,6 @@ class _CreerClientState extends State<CreerClient> {
   @override
   Widget build(BuildContext context) {
     _ctx = context;
-    print("abed "+ phoneIsoCode+' id user '+ widget.iduserOnline+ ' token '+token);
 
     final telephoneCodePays =IntlPhoneField(
       decoration: InputDecoration(
@@ -455,16 +454,13 @@ class _CreerClientState extends State<CreerClient> {
           borderSide: BorderSide(),
         ),
       ),
-
-      initialCountryCode: phoneIsoCode,
-      initialValue: phoneNumber,
+      initialCountryCode:_code_pays,
+      initialValue:_telephoneclient,
       onChanged: (phone) {
-        this._telephoneclient = phone.completeNumber;
-        print('Country number to: '+ phone.completeNumber+' code '+ this._code_pays);
+        this._telephoneclient = phone.number;
       },
       onCountryChanged: (country) {
         this._code_pays = country.code;
-        print('Country changed to: ' + country.name +' ' + country.code);
       },
     );
 

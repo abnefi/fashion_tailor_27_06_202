@@ -129,10 +129,6 @@ class _ListeCommandesState extends State<ListeCommandes> {
                               vertical: 2.0, horizontal: 4.0),
                           child: Slidable(
                             key: ValueKey(commande),
-
-
-
-
                             // The start action pane is the one at the left or the top side.
                             startActionPane: ActionPane(
                               // A motion is a widget used to control how the pane animates.
@@ -219,10 +215,16 @@ class _ListeCommandesState extends State<ListeCommandes> {
                                 borderRadius: BorderRadius.circular(3.0),
                               ),
                               child: ListTile(
-                                onTap: () {
-                                  // Navigator.of(context).pushNamed(
-                                  //     ListeCommandesParClients
-                                  //         .taglisteCommandeParClient);
+                                onTap: ()
+                                {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailsCommandes(
+                                          commande: commande),
+                                    ),
+                                  );
+
                                 },
                                 title:
                                     Text(commande.idcommandeTenue.toString()),

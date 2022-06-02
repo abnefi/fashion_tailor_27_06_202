@@ -916,8 +916,8 @@ class _MyDialogState extends State<MyDialog> {
             child: Container(
               child: Image.file(
                 imageFileTissu,
-                height: 150,
-                width: 150,
+                height: 200,
+                width: 400,
                 fit: BoxFit.scaleDown,
               ),
             ));
@@ -940,8 +940,8 @@ class _MyDialogState extends State<MyDialog> {
             child: Container(
               child: Image.file(
                 imageFileModele,
-                height: 150,
-                width: 150,
+                height: 200,
+                width: 400,
                 fit: BoxFit.scaleDown,
               ),
             ));

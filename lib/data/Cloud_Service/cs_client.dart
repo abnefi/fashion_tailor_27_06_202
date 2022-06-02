@@ -18,6 +18,14 @@ class Cloud_Service_Client {
         .snapshots();
   }
 
+  Stream<QuerySnapshot> chargerUnSeulClient(String idClient) {
+    return firestoreReference
+        .where("idclientFirestore", isEqualTo: idClient)
+        .limit(1)
+        .snapshots();
+  }
+
+
   Stream<QuerySnapshot> chargerToutLesClientsFiltrerDuCouturier(
       String idCouturier, String recherche) {
     print(idCouturier);

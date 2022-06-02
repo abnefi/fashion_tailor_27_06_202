@@ -16,6 +16,7 @@ import 'pages/Accueuils/AccueilPage.dart';
 import 'pages/Accueuils/home_screen.dart';
 import 'pages/Accueuils/intro_screen.dart';
 import 'pages/Accueuils/splash_screen.dart';
+import 'pages/Commandes/ListeCommandesParClients.dart';
 import 'pages/login/ConnexionPage.dart';
 import 'pages/login/InscriptionPage_1.dart';
 import 'pages/login/InscriptionPage_2.dart';
@@ -77,9 +78,10 @@ class ECouture extends StatelessWidget
     ModifierClient.tagModifierClient: (context) => ModifierClient(),
     ChoisirClient.tagChoisirClient: (context) => ChoisirClient(),
     DetailsClients.tagDetailClient: (context) => DetailsClients(Client(null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0)),
-    DetailsCommandes.tagDetailsCommandes: (context) => DetailsCommandes(),
+    DetailsCommandes.tagDetailsCommandes: (context) => DetailsCommandes(commande: null),
     HomeScreen.tagHomeScreen: (context) => HomeScreen(),
     IntroScreen.tagIntroScreen: (context) => IntroScreen(),
+    ListeCommandesParClients.taglisteCommandeParClient: (context) => ListeCommandesParClients(),
   };
 
   @override

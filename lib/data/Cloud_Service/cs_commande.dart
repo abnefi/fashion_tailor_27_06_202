@@ -16,6 +16,7 @@ class Cloud_Service_Commande {
 
   Stream<QuerySnapshot> chargerLesCommandeParCouturier(String idCouturier) {
     return firestoreReference.where('idcouturier_c', isEqualTo: idCouturier)
+        .orderBy('datecommande', descending: false)
         .limit(20)
         .snapshots();
   }

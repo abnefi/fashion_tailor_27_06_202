@@ -35,7 +35,7 @@ class _AddImageState extends State<AddImage> {
 
     final pickedFile = await picker.getImage(
       source: ImageSource.camera,
-      maxWidth: 200,
+      maxWidth: 400,
       maxHeight: 200,
     );
     setState(() {
@@ -54,7 +54,7 @@ class _AddImageState extends State<AddImage> {
   {
     final pickedFile = await picker.pickImage(
       source: ImageSource.gallery,
-      maxWidth: 200,
+      maxWidth: 400,
       maxHeight: 200,
     );
 
